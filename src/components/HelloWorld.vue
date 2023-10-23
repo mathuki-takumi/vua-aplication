@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ localMsg }}</h1>
+    <input v-model="localMsg" />
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -35,6 +36,16 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      localMsg: this.msg
+    };
+  },
+  watch: {
+    msg(newVal) {
+      this.localMsg = newVal;
+    }
   }
 }
 </script>
@@ -42,7 +53,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
-  margin: 80px 0 0;
+  margin: 40px 0 0;
 }
 ul {
   list-style-type: none;
